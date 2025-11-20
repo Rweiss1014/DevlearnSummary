@@ -337,7 +337,7 @@ export function Home({ onNavigate }: HomeProps) {
 
                     {/* DevLearn Insight */}
                     <div className="mb-6">
-                      <h4 className="text-slate-900 font-bold mb-2">What DevLearn Showed Us</h4>
+                      <h4 className="text-slate-900 mb-2" style={{ fontWeight: 700 }}>What DevLearn Showed Us</h4>
                       <p className="text-slate-700 mb-3">{area.devlearnInsight}</p>
                       {area.tools && (
                         <div className="flex flex-wrap gap-2">
