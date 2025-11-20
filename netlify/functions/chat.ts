@@ -1,7 +1,5 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import { readFileSync } from "fs";
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
+import { HIPAA_MODULE_CONTENT } from "./hipaa_content";
 
 interface ChatMessage {
   role: string;
@@ -113,17 +111,7 @@ ONLY shift into teaching mode when they explicitly ask:
 
 This is the complete HIPAA Compliance Training Module for AssistRx, including all slide content and facilitator notes. Use this comprehensive information to answer questions about HIPAA, provide coaching guidance, suggest teaching strategies, and create scenarios.
 
-${(() => {
-  try {
-    // Use __dirname to get path relative to this function file
-    const filePath = join(__dirname, 'hipaa_complete_content.txt');
-    return readFileSync(filePath, 'utf-8');
-  } catch (error) {
-    console.error('Error loading HIPAA content:', error);
-    console.error('Attempted path:', __dirname);
-    return '** Error loading HIPAA module content **';
-  }
-})()}
+${HIPAA_MODULE_CONTENT}
 
 **THIS IS THE COMPLETE EXTENT OF YOUR KNOWLEDGE. DO NOT REFERENCE ANY OTHER TOPICS OR MATERIALS.**
 
