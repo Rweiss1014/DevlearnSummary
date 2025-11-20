@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { MessageCircle, X, Send, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { Card } from './ui/card';
@@ -104,8 +104,17 @@ export function ChatbotTutor() {
           {/* Header */}
           <div className="bg-gradient-to-br from-[#007178] to-[#00ae9a] text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <Bot className="w-6 h-6" />
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1">
+                <img
+                  src="/tutorbot-avatar.png"
+                  alt="TutorBot"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    // Fallback to text if image doesn't load
+                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).parentElement!.innerHTML = '🤖';
+                  }}
+                />
               </div>
               <div>
                 <h3 className="text-white text-sm">TutorBot</h3>
@@ -133,13 +142,21 @@ export function ChatbotTutor() {
                   className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                     message.role === 'user'
                       ? 'bg-[#007178] text-white'
-                      : 'bg-[#ade2e3] text-[#007178]'
+                      : 'bg-white'
                   }`}
                 >
                   {message.role === 'user' ? (
                     <User className="w-4 h-4" />
                   ) : (
-                    <Bot className="w-4 h-4" />
+                    <img
+                      src="/tutorbot-avatar.png"
+                      alt="TutorBot"
+                      className="w-6 h-6 object-contain p-0.5"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                        (e.target as HTMLImageElement).parentElement!.innerHTML = '🤖';
+                      }}
+                    />
                   )}
                 </div>
                 <div
@@ -155,8 +172,16 @@ export function ChatbotTutor() {
             ))}
             {isLoading && (
               <div className="flex gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#ade2e3] text-[#007178] flex items-center justify-center flex-shrink-0">
-                  <Bot className="w-4 h-4" />
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                  <img
+                    src="/tutorbot-avatar.png"
+                    alt="TutorBot"
+                    className="w-6 h-6 object-contain p-0.5"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = '🤖';
+                    }}
+                  />
                 </div>
                 <div className="bg-white text-slate-700 border border-slate-200 rounded-lg p-3">
                   <div className="flex gap-1">
