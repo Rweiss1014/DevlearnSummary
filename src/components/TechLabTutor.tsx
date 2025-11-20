@@ -32,7 +32,7 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
         {/* Two Prototypes */}
         <div className="md:grid md:grid-cols-2 md:gap-12">
           {/* Tutor Chatbot */}
-          <div className="mb-16 md:mb-0">
+          <div style={{ marginBottom: '64px' }} className="md:mb-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
