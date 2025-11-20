@@ -36,7 +36,7 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mb-12 md:mb-0"
+            className="mb-20 md:mb-0"
           >
             <Card className="p-8 h-full border-2 border-[#007178]/30 hover:border-[#007178]/50 transition-colors">
               <div className="flex items-start gap-4 mb-4">
