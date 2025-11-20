@@ -84,10 +84,10 @@ const impactAreasDetailed = [
     subtitle: 'Automating the Work About the Work',
     headline: 'Automate the admin so we can focus on impact.',
     challenge: 'Right now, meeting notes, actions, and project updates live in different places. We spend a lot of time retyping decisions into trackers, chasing "who owns what," and manually updating statuses.',
-    devlearnInsight: 'Teams are using automation and AI to take meeting outputs and turn them directly into trackable work. The good news: we don\'t need new platforms to start this. We already have:',
+    devlearnInsight: 'Teams are using automation to take meeting outputs and turn them directly into trackable work. The good news: we don\'t need new platforms to start this. We already have:',
     tools: ['Teams transcription', 'Copilot', 'Power Automate', 'SmartSheet'],
     examples: [
-      'Auto-create SmartSheet tasks directly from Teams meeting transcripts.',
+      'Auto-create SmartSheet tasks from Teams meeting transcripts.',
       'Detect phrases like "Rachel will…" or "Alyssa to…" and assign tasks with owners and due dates.',
       'Auto-update project status fields in SmartSheet when progress is discussed in meetings.',
       'Send a daily summary of changed tasks or statuses across key project sheets.',
@@ -337,7 +337,7 @@ export function Home({ onNavigate }: HomeProps) {
 
                     {/* DevLearn Insight */}
                     <div className="mb-6">
-                      <h4 className="text-slate-900 mb-2">What DevLearn Showed Us</h4>
+                      <h4 className="text-slate-900 font-semibold mb-2">What DevLearn Showed Us</h4>
                       <p className="text-slate-700 mb-3">{area.devlearnInsight}</p>
                       {area.tools && (
                         <div className="flex flex-wrap gap-2">
