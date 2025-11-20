@@ -17,8 +17,6 @@ export default function App() {
       {currentPage === 'techlab' && <TechLabTutor onNavigate={setCurrentPage} />}
       {currentPage === 'chat' && <ChatPage />}
       {currentPage === 'tetris' && <TetrisPage onNavigate={setCurrentPage} />}
-
-      <ChatbotTutor />
     </div>
   );
 }
