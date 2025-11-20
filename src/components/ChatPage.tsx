@@ -12,10 +12,10 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
-  "How does the Tutor Chatbot work?",
-  "What content can I ask about?",
-  "How is this different from searching a module?",
-  "Can it help with compliance scenarios?",
+  "What is Protected Health Information (PHI)?",
+  "What are common HIPAA violations?",
+  "How should I report a HIPAA breach?",
+  "Can you give me a scenario about unlocked screens?",
 ];
 
 export function ChatPage() {
@@ -31,7 +31,7 @@ export function ChatPage() {
         {
           id: '1',
           type: 'bot',
-          content: "Hi! I'm the Tutor Chatbot prototype. I can answer questions about our training modules and help you practice scenarios. What would you like to know?",
+          content: "Hi! I'm TutorBot - a prototype for AssistRx training. I can answer questions about HIPAA Compliance and help you practice scenarios. What would you like to know?",
           timestamp: new Date(),
         },
       ]);
@@ -65,7 +65,7 @@ export function ChatPage() {
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: "This is a prototype demonstration. In the full version, I would provide detailed answers based on your uploaded training content, complete with relevant examples and follow-up questions to ensure understanding.",
+        content: "This is a prototype. I currently have access to the HIPAA Compliance training module and can provide detailed answers, scenarios, and teaching guidance based on that content.",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
@@ -180,7 +180,7 @@ export function ChatPage() {
               </Button>
             </div>
             <p className="text-xs text-slate-500 mt-2 text-center">
-              Prototype demo • Real version will use your uploaded training content
+              Prototype • Currently loaded: HIPAA Compliance Training Module
             </p>
           </div>
         </Card>
