@@ -30,14 +30,14 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
         </motion.div>
 
         {/* Two Prototypes */}
-        <div className="flex flex-col md:grid md:grid-cols-2 space-y-12 md:space-y-0 md:gap-12">
+        <div className="flex flex-col md:grid md:grid-cols-2 md:gap-12">
           {/* Tutor Chatbot */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <Card className="p-8 h-full border-2 border-[#007178]/30 hover:border-[#007178]/50 transition-colors">
+            <Card className="p-8 border-2 border-[#007178]/30 hover:border-[#007178]/50 transition-colors">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#007178]/10">
                   <Bot className="w-6 h-6 text-[#007178]" />
@@ -82,8 +82,9 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-16 md:mt-0"
           >
-            <Card className="p-8 h-full border-2 border-[#00ae9a]/30 hover:border-[#00ae9a]/50 transition-colors">
+            <Card className="p-8 border-2 border-[#00ae9a]/30 hover:border-[#00ae9a]/50 transition-colors">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#00ae9a]/10">
                   <Gamepad2 className="w-6 h-6 text-[#00ae9a]" />
