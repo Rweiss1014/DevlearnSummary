@@ -196,38 +196,34 @@ ${(() => {
     const data = await response.json();
     const botMessage = data.choices[0].message.content;
 
-    // Check if user is requesting an image or asking about a topic with a screenshot
     const lastUserMessage = messages[messages.length - 1]?.content.toLowerCase() || "";
-    const imageKeywords = ["create an image", "generate an image", "show me a picture", "draw", "make an image", "show me an image", "create a diagram", "show me a diagram", "visualize", "illustrate"];
-    const isImageRequest = imageKeywords.some(keyword => lastUserMessage.includes(keyword));
-
     let imageUrl: string | undefined;
 
-    // Map topics to module screenshots
+    // Map topics to module screenshots - these will be shown automatically when relevant
     const screenshotMap: { [key: string]: { file: string; keywords: string[] } } = {
       'phi-definition': {
         file: '/hipaa-screenshots/Slide4.png',
-        keywords: ['what is phi', 'protected health information', 'define phi', 'phi definition', 'forms of phi', 'types of phi', 'verbal written electronic']
+        keywords: ['what is phi', 'protected health information', 'define phi', 'phi definition', 'forms of phi', 'types of phi', 'verbal written electronic', 'examples of phi']
       },
       'phi-daily-work': {
         file: '/hipaa-screenshots/Slide5.png',
-        keywords: ['phi in daily work', 'where is phi', 'phi examples', 'day to day', 'phone calls systems emails', 'where do i see phi']
+        keywords: ['phi in daily work', 'where is phi', 'phi examples', 'day to day', 'phone calls systems emails', 'where do i see phi', 'where does phi show up']
       },
       'role-based-access': {
         file: '/hipaa-screenshots/Slide7.png',
-        keywords: ['role based access', 'access permissions', 'curiosity compliance', 'who can access', 'appropriate access', 'need to know']
+        keywords: ['role based access', 'access permissions', 'curiosity compliance', 'who can access', 'appropriate access', 'need to know', 'can i access']
       },
       'common-violations': {
         file: '/hipaa-screenshots/Slide10.png',
-        keywords: ['common violations', 'hipaa violations', 'what not to do', 'mistakes', 'unlocked screen', 'wrong recipient', 'failed authentication']
+        keywords: ['common violations', 'hipaa violations', 'what not to do', 'mistakes', 'unlocked screen', 'wrong recipient', 'failed authentication', 'common mistakes', 'what are violations']
       },
       'reporting': {
         file: '/hipaa-screenshots/Slide13.png',
-        keywords: ['how to report', 'report breach', 'nonconformance form', 'reporting noncompliance', 'report violation', 'what to do if']
+        keywords: ['how to report', 'report breach', 'nonconformance form', 'reporting noncompliance', 'report violation', 'what to do if', 'how do i report', 'report a mistake']
       }
     };
 
-    // Check if the user's question matches a screenshot topic
+    // Check if the user's question matches a screenshot topic (auto-include)
     for (const [topic, config] of Object.entries(screenshotMap)) {
       if (config.keywords.some(keyword => lastUserMessage.includes(keyword))) {
         imageUrl = config.file;
@@ -235,8 +231,12 @@ ${(() => {
       }
     }
 
-    // If no screenshot found but user requested an image, generate with DALL-E
-    if (isImageRequest && !imageUrl) {
+    // Check if user explicitly requested a custom visual
+    const imageRequestKeywords = ["create an image", "generate an image", "show me a picture", "draw", "make an image", "show me an image", "create a diagram", "show me a diagram", "visualize", "illustrate"];
+    const isExplicitImageRequest = imageRequestKeywords.some(keyword => lastUserMessage.includes(keyword));
+
+    // If user explicitly asked for a visual and we don't have a screenshot, generate with DALL-E
+    if (isExplicitImageRequest && !imageUrl) {
       try {
         // Extract what the user wants to visualize
         const imagePrompt = `Create a professional, educational diagram or illustration for HIPAA compliance training that shows: ${lastUserMessage}. Style: Clean, professional, corporate training material.`;
