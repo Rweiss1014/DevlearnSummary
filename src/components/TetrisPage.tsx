@@ -42,13 +42,13 @@ export function TetrisPage({ onNavigate }: TetrisPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white rounded-xl shadow-2xl border-2 border-[#00ae9a]/20 overflow-hidden"
-          style={{ height: 'calc(100vh - 240px)', minHeight: '600px' }}
+          className="bg-white rounded-xl shadow-2xl border-2 border-[#00ae9a]/20"
         >
           <iframe
             src="/tetris/index.html"
             title="HIPAA Tetris Game"
-            className="w-full h-full border-0"
+            className="w-full border-0 rounded-xl"
+            style={{ height: '800px', minHeight: '600px' }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
         </motion.div>
