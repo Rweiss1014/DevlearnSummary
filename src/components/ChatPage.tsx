@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Bot, Send, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   id: string;
@@ -155,7 +156,15 @@ export function ChatPage() {
                         <span className="text-sm text-[#007178]">Tutor</span>
                       </div>
                     )}
-                    <p className="leading-relaxed">{message.content}</p>
+                    {message.type === 'bot' ? (
+                      <ReactMarkdown
+                        className="leading-relaxed prose prose-sm max-w-none prose-headings:text-slate-800 prose-strong:text-slate-900 prose-p:my-2 prose-ul:my-2 prose-li:my-0.5"
+                      >
+                        {message.content}
+                      </ReactMarkdown>
+                    ) : (
+                      <p className="leading-relaxed">{message.content}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
