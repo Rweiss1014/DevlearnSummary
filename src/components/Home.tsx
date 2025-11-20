@@ -331,7 +331,7 @@ export function Home({ onNavigate }: HomeProps) {
 
                     {/* Challenge */}
                     <div className="mb-6">
-                      <h4 className="text-slate-900 mb-2">Challenge / Need</h4>
+                      <h4 className="text-slate-900 font-bold mb-2">Challenge / Need</h4>
                       <p className="text-slate-700">{area.challenge}</p>
                     </div>
 
@@ -360,7 +360,7 @@ export function Home({ onNavigate }: HomeProps) {
 
                     {/* Actionable Examples */}
                     <div className="mb-6">
-                      <h4 className="text-slate-900 mb-3">Actionable Examples</h4>
+                      <h4 className="text-slate-900 font-bold mb-3">Actionable Examples</h4>
                       <ul className="space-y-2">
                         {area.examples.map((example, idx) => (
                           <li key={idx} className="flex items-start gap-3">
@@ -374,7 +374,7 @@ export function Home({ onNavigate }: HomeProps) {
                     {/* Planned Actions */}
                     {area.plannedActions && (
                       <div className="mb-6">
-                        <h4 className="text-slate-900 mb-3">Planned Actions</h4>
+                        <h4 className="text-slate-900 font-bold mb-3">Planned Actions</h4>
                         <p className="text-slate-700 mb-2">Host short internal sessions to:</p>
                         <ul className="space-y-2">
                           {area.plannedActions.map((action, idx) => (
