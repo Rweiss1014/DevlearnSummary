@@ -128,7 +128,7 @@ const impactAreasDetailed = [
     examples: [
       'Facilitators can type how they\'d coach or explain a scenario, and Chat Tutor returns clearer language, stronger alternatives, and suggested framing they can use right away—whether they\'re in the middle of a session or preparing for one.',
       'During class, they can keep the site open on a second screen to quickly check details, clarify workflows, or generate examples without slowing the room down.',
-      'Business managers can use it whenever they\'re asked content-specific questions, giving them confident, consistent answers without guessing.',
+      'Business Partners can use it whenever they\'re asked content-specific questions, giving them confident, consistent answers without guessing.',
       'Afterwards, facilitators and leaders can review the types of questions the Tutor receives to spot patterns and identify where content or coaching needs tightening.',
     ],
     callToAction: 'This is where our Tech Lab: Tutor Chatbot comes in. We can prototype our own version, powered by OpenAI and grounded in our existing modules.',
