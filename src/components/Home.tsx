@@ -29,7 +29,7 @@ const impactAreas = [
       'Turn a key concept into a 60–90 second PWO mini-game (e.g., identify the right choice, spot the error, sequence the steps).',
       'Convert a long SOP into a micro "spot-the-error" challenge instead of a static PDF.',
       'Turn a workflow into a branching scenario where learners choose the next step and see immediate feedback.',
-      'Use AI to generate multiple versions (different distractors, tones, or difficulty levels) without rebuilding from scratch.',
+      'Generate multiple versions (different distractors, tones, or difficulty levels) without rebuilding from scratch.',
     ],
     plannedActions: [
       'Show how PWOs work under the hood',
@@ -107,7 +107,7 @@ const impactAreasDetailed = [
       'Turn a key concept into a 60–90 second PWO mini-game (e.g., identify the right choice, spot the error, sequence the steps).',
       'Convert a long SOP into a micro "spot-the-error" challenge instead of a static PDF.',
       'Turn a workflow into a branching scenario where learners choose the next step and see immediate feedback.',
-      'Use AI to generate multiple versions (different distractors, tones, or difficulty levels) without rebuilding from scratch.',
+      'Generate multiple versions (different distractors, tones, or difficulty levels) without rebuilding from scratch.',
     ],
     plannedActions: [
       'Show how PWOs work under the hood',
