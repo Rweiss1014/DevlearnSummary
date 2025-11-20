@@ -15,7 +15,7 @@ export function ChatbotTutor() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm Emma, your TutorBot. I help facilitators teach AssistRx training materials confidently and clearly.\n\nI can answer questions about:\n• HIPAA Compliance (PHI, violations, best practices, reporting)\n• DevLearn 2025 strategies\n\nAsk me anything directly, or if you need help teaching a concept, just let me know and I can create scenarios, activities, or lesson plans.\n\nWhat can I help with?",
+      content: "Hi! I'm TutorBot. I help facilitators teach AssistRx training materials confidently and clearly.\n\nI can answer questions about:\n• HIPAA Compliance (PHI, violations, best practices, reporting)\n• DevLearn 2025 strategies\n\nAsk me anything directly, or if you need help teaching a concept, just let me know and I can create scenarios, activities, or lesson plans.\n\nWhat can I help with?",
     },
   ]);
   const [input, setInput] = useState('');
@@ -108,7 +108,7 @@ export function ChatbotTutor() {
                 <Bot className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-white text-sm">Emma - TutorBot</h3>
+                <h3 className="text-white text-sm">TutorBot</h3>
                 <p className="text-white/80 text-xs">AssistRx Training Expert</p>
               </div>
             </div>
