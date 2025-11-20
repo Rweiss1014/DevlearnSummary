@@ -10,6 +10,7 @@ interface Message {
   type: 'bot' | 'user';
   content: string;
   timestamp: Date;
+  imageUrl?: string;
 }
 
 const SUGGESTED_QUESTIONS = [
@@ -86,6 +87,7 @@ export function ChatPage() {
         type: 'bot',
         content: data.message,
         timestamp: new Date(),
+        imageUrl: data.imageUrl,
       };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
@@ -157,11 +159,20 @@ export function ChatPage() {
                       </div>
                     )}
                     {message.type === 'bot' ? (
-                      <ReactMarkdown
-                        className="leading-relaxed prose prose-sm max-w-none prose-headings:text-slate-800 prose-strong:text-slate-900 prose-p:my-2 prose-ul:my-2 prose-li:my-0.5"
-                      >
-                        {message.content}
-                      </ReactMarkdown>
+                      <>
+                        <ReactMarkdown
+                          className="leading-relaxed prose prose-sm max-w-none prose-headings:text-slate-800 prose-strong:text-slate-900 prose-p:my-2 prose-ul:my-2 prose-li:my-0.5"
+                        >
+                          {message.content}
+                        </ReactMarkdown>
+                        {message.imageUrl && (
+                          <img
+                            src={message.imageUrl}
+                            alt="Generated illustration"
+                            className="mt-4 rounded-lg border-2 border-[#007178]/20 max-w-full h-auto"
+                          />
+                        )}
+                      </>
                     ) : (
                       <p className="leading-relaxed">{message.content}</p>
                     )}

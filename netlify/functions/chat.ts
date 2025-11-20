@@ -10,6 +10,11 @@ interface ChatRequest {
   pdfContent?: string;
 }
 
+interface ChatResponse {
+  message: string;
+  imageUrl?: string;
+}
+
 const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
   // Only allow POST requests
   if (event.httpMethod !== "POST") {
@@ -217,7 +222,7 @@ Only access information directly related to your current job function or assigne
         "Authorization": `Bearer ${openaiApiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4",
+        model: "gpt-4o",
         messages: [
           {
             role: "system",
@@ -242,6 +247,46 @@ Only access information directly related to your current job function or assigne
     }
 
     const data = await response.json();
+    const botMessage = data.choices[0].message.content;
+
+    // Check if user is requesting an image
+    const lastUserMessage = messages[messages.length - 1]?.content.toLowerCase() || "";
+    const imageKeywords = ["create an image", "generate an image", "show me a picture", "draw", "make an image", "show me an image", "create a diagram", "show me a diagram", "visualize", "illustrate"];
+    const isImageRequest = imageKeywords.some(keyword => lastUserMessage.includes(keyword));
+
+    let imageUrl: string | undefined;
+
+    if (isImageRequest) {
+      try {
+        // Extract what the user wants to visualize
+        const imagePrompt = `Create a professional, educational diagram or illustration for HIPAA compliance training that shows: ${lastUserMessage}. Style: Clean, professional, corporate training material.`;
+
+        const imageResponse = await fetch("https://api.openai.com/v1/images/generations", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${openaiApiKey}`,
+          },
+          body: JSON.stringify({
+            model: "dall-e-3",
+            prompt: imagePrompt,
+            n: 1,
+            size: "1024x1024",
+            quality: "standard",
+          }),
+        });
+
+        if (imageResponse.ok) {
+          const imageData = await imageResponse.json();
+          imageUrl = imageData.data[0]?.url;
+        } else {
+          console.error("DALL-E API error:", await imageResponse.text());
+        }
+      } catch (imageError) {
+        console.error("Error generating image:", imageError);
+        // Continue without image if generation fails
+      }
+    }
 
     return {
       statusCode: 200,
@@ -249,7 +294,8 @@ Only access information directly related to your current job function or assigne
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: data.choices[0].message.content,
+        message: botMessage,
+        imageUrl: imageUrl,
       }),
     };
   } catch (error) {
