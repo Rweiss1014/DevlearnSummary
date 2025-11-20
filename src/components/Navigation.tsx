@@ -9,7 +9,7 @@ interface NavigationProps {
 
 const navItems = [
   { id: 'home' as const, label: 'Home' },
-  { id: 'techlab' as const, label: 'Tech Lab: Tutor Chatbot' },
+  { id: 'techlab' as const, label: 'Tech Lab' },
 ];
 
 export function Navigation({ currentPage, onNavigate }: NavigationProps) {

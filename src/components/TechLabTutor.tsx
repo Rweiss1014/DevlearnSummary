@@ -25,12 +25,12 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
 
           <h1 className="text-slate-900 mb-4">DevLearn Prototypes</h1>
           <p className="text-slate-600 text-xl max-w-3xl mx-auto">
-            Two working prototypes from our DevLearn insights: AI-powered tutoring for facilitators and gamified micro-learning for instructional designers.
+            Two working prototypes from our DevLearn insights: conversational tutoring for facilitators and gamified micro-learning for instructional designers.
           </p>
         </motion.div>
 
         {/* Two Prototypes */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-12">
           {/* Tutor Chatbot */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
               </div>
 
               <p className="text-slate-700 mb-6">
-                An AI assistant grounded in our training modules. Ask questions, practice scenarios, and get real-time coaching—all based on approved content.
+                A conversational assistant grounded in our training modules. Ask questions, practice scenarios, and get real-time coaching—all based on approved content.
               </p>
 
               <ul className="space-y-2 mb-6">
