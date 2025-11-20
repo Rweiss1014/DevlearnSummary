@@ -1,4 +1,6 @@
 import type { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 interface ChatMessage {
   role: string;
@@ -104,76 +106,21 @@ ONLY shift into teaching mode when they explicitly ask:
 - "I need a practice exercise."
 - "Any ideas for reinforcing this concept?"
 
-# Your ONLY Knowledge Base - HIPAA Compliance Training Module
+# Your ONLY Knowledge Base - HIPAA Compliance Training Module (Complete with Facilitator Notes)
 
 **THIS IS YOUR ONLY SOURCE OF INFORMATION. DO NOT USE ANY OTHER KNOWLEDGE.**
-**What is PHI?**
-Protected Health Information includes anything that can identify an individual:
-- Name, date of birth, medical record number
-- Diagnosis, insurance details
-- Even information that doesn't seem 'sensitive'
 
-**Forms:** Verbal (saying names/treatment), Written (handwritten notes/documents), Electronic (emails, shared files, system screens)
+This is the complete HIPAA Compliance Training Module for AssistRx, including all slide content and facilitator notes. Use this comprehensive information to answer questions about HIPAA, provide coaching guidance, suggest teaching strategies, and create scenarios.
 
-**PHI in Daily Work:**
-- Phone Calls: Repeating names, confirming treatment, handling complaints
-- Systems: Case notes, enrollment records, referral documents
-- Emails: PHI in subject lines, forwarded messages, or sent without encryption
-- Documents: Scanned forms, intake paperwork, faxes, internal spreadsheets
-- Screens: Leaving systems open or visible in shared spaces
-
-**Legal & Ethical Obligations:**
-- Legal: HIPAA sets national standards; violations = financial penalties, lawsuits, or loss of access
-- Trust: Individuals need to feel secure sharing information
-- Ethical: Protecting privacy is a core professional responsibility
-- Organizational: Breaches affect reputation and operational standing
-
-**Role-Based Access:**
-- Permissions based on specific job responsibilities
-- Platforms like CaseAssist restrict access by tier/workflow
-- **Curiosity ≠ Compliance**: Just because you can view something doesn't mean you should
-- Report immediately if access seems misaligned
-
-**Need-To-Know Basis:**
-Only access information directly related to your current job function or assigned cases.
-
-**Inappropriate Access Examples:**
-- Looking up friend/relative's information
-- Reviewing a case out of curiosity, not responsibility
-- Pulling data "just to see what happened" after interaction ends
-
-**Securing PHI:**
-- Logging In/Out: Use your own login, log out when done/switching devices
-- Device Security: Use approved tools, avoid personal devices, report lost equipment
-- Screen Privacy: Lock screen when away (Ctrl+Alt+Del or Cmd+Ctrl+Q), protect info in shared spaces
-
-**Common Violations:**
-1. **Unlocked Screens**: Walking away from open workstation exposes PHI
-2. **Wrong Recipient**: Misdirected emails, faxes, messages - double-check before sending
-3. **Failed Authentication**: Sharing PHI without verifying caller identity
-
-**Accidental Exposure:**
-- Sending PHI to wrong email = breach, even if quickly corrected
-- Forgetting to log out/authenticate = breach, even if no harm intended
-- Every incident is investigated; individuals have right to know
-
-**Reporting Noncompliance:**
-- Don't try to fix alone or delete records - transparency is key
-- Document: what was shared, how it happened, who saw it, when
-- Notify lead/manager immediately
-- Manager completes Nonconformance Form for any potential breach
-
-**Best Practices:**
-1. Pause & Protect Mindset: Slow down before accessing/sharing
-2. Use Secure Systems: Never send PHI through unsecured channels
-3. Mindfulness in Shared Spaces: Be aware during virtual meetings/open offices
-4. Clean Desk & Lock Screen Culture: Keep desk clean, lock screen every time
-
-**Real Scenarios:**
-1. **Misdirected Email**: Sending case update to wrong contact = breach
-2. **Unlocked Screen**: Individual's info visible on screen during lunch = breach
-3. **Caller Verification Skipped**: Sharing PHI without verifying caregiver = breach
-4. **Curiosity Access**: Looking up former individual "just to see" = breach
+${(() => {
+  try {
+    const filePath = join(process.cwd(), 'hipaa_complete_content.txt');
+    return readFileSync(filePath, 'utf-8');
+  } catch (error) {
+    console.error('Error loading HIPAA content:', error);
+    return '** Error loading HIPAA module content **';
+  }
+})()}
 
 **THIS IS THE COMPLETE EXTENT OF YOUR KNOWLEDGE. DO NOT REFERENCE ANY OTHER TOPICS OR MATERIALS.**
 
