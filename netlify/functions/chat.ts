@@ -196,14 +196,47 @@ ${(() => {
     const data = await response.json();
     const botMessage = data.choices[0].message.content;
 
-    // Check if user is requesting an image
+    // Check if user is requesting an image or asking about a topic with a screenshot
     const lastUserMessage = messages[messages.length - 1]?.content.toLowerCase() || "";
     const imageKeywords = ["create an image", "generate an image", "show me a picture", "draw", "make an image", "show me an image", "create a diagram", "show me a diagram", "visualize", "illustrate"];
     const isImageRequest = imageKeywords.some(keyword => lastUserMessage.includes(keyword));
 
     let imageUrl: string | undefined;
 
-    if (isImageRequest) {
+    // Map topics to module screenshots
+    const screenshotMap: { [key: string]: { file: string; keywords: string[] } } = {
+      'phi-definition': {
+        file: '/hipaa-screenshots/Slide4.png',
+        keywords: ['what is phi', 'protected health information', 'define phi', 'phi definition', 'forms of phi', 'types of phi', 'verbal written electronic']
+      },
+      'phi-daily-work': {
+        file: '/hipaa-screenshots/Slide5.png',
+        keywords: ['phi in daily work', 'where is phi', 'phi examples', 'day to day', 'phone calls systems emails', 'where do i see phi']
+      },
+      'role-based-access': {
+        file: '/hipaa-screenshots/Slide7.png',
+        keywords: ['role based access', 'access permissions', 'curiosity compliance', 'who can access', 'appropriate access', 'need to know']
+      },
+      'common-violations': {
+        file: '/hipaa-screenshots/Slide10.png',
+        keywords: ['common violations', 'hipaa violations', 'what not to do', 'mistakes', 'unlocked screen', 'wrong recipient', 'failed authentication']
+      },
+      'reporting': {
+        file: '/hipaa-screenshots/Slide13.png',
+        keywords: ['how to report', 'report breach', 'nonconformance form', 'reporting noncompliance', 'report violation', 'what to do if']
+      }
+    };
+
+    // Check if the user's question matches a screenshot topic
+    for (const [topic, config] of Object.entries(screenshotMap)) {
+      if (config.keywords.some(keyword => lastUserMessage.includes(keyword))) {
+        imageUrl = config.file;
+        break;
+      }
+    }
+
+    // If no screenshot found but user requested an image, generate with DALL-E
+    if (isImageRequest && !imageUrl) {
       try {
         // Extract what the user wants to visualize
         const imagePrompt = `Create a professional, educational diagram or illustration for HIPAA compliance training that shows: ${lastUserMessage}. Style: Clean, professional, corporate training material.`;
