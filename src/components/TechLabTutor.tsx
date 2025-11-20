@@ -30,99 +30,102 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
         </motion.div>
 
         {/* Two Prototypes */}
-        <div className="flex flex-col md:grid md:grid-cols-2 md:gap-12">
+        <div className="md:grid md:grid-cols-2 md:gap-12">
           {/* Tutor Chatbot */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <Card className="p-8 border-2 border-[#007178]/30 hover:border-[#007178]/50 transition-colors">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#007178]/10">
-                  <Bot className="w-6 h-6 text-[#007178]" />
+          <div className="mb-16 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <Card className="p-8 border-2 border-[#007178]/30 hover:border-[#007178]/50 transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#007178]/10">
+                    <Bot className="w-6 h-6 text-[#007178]" />
+                  </div>
+                  <div>
+                    <h3 className="text-slate-900 mb-1">Tutor Chatbot</h3>
+                    <p className="text-sm text-slate-600">For Facilitators & Business Partners</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-slate-900 mb-1">Tutor Chatbot</h3>
-                  <p className="text-sm text-slate-600">For Facilitators & Business Partners</p>
-                </div>
-              </div>
 
-              <p className="text-slate-700 mb-6">
-                A conversational assistant grounded in our training modules. Ask questions, practice scenarios, and get real-time coaching—all based on approved content.
-              </p>
+                <p className="text-slate-700 mb-6">
+                  A conversational assistant grounded in our training modules. Ask questions, practice scenarios, and get real-time coaching—all based on approved content.
+                </p>
 
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Answers questions across wide content ranges</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Reduces "what do I do if..." questions to facilitators</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Currently loaded: HIPAA Compliance Training</span>
-                </li>
-              </ul>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Answers questions across wide content ranges</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Reduces "what do I do if..." questions to facilitators</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#007178] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Currently loaded: HIPAA Compliance Training</span>
+                  </li>
+                </ul>
 
-              <Button
-                className="w-full bg-[#007178] hover:bg-[#00ae9a]"
-                onClick={() => onNavigate('chat')}
-              >
-                Try Chat Demo
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Card>
-          </motion.div>
+                <Button
+                  className="w-full bg-[#007178] hover:bg-[#00ae9a]"
+                  onClick={() => onNavigate('chat')}
+                >
+                  Try Chat Demo
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Card>
+            </motion.div>
+          </div>
 
           {/* Tetris PWO */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-16 md:mt-0"
-          >
-            <Card className="p-8 border-2 border-[#00ae9a]/30 hover:border-[#00ae9a]/50 transition-colors">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#00ae9a]/10">
-                  <Gamepad2 className="w-6 h-6 text-[#00ae9a]" />
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Card className="p-8 border-2 border-[#00ae9a]/30 hover:border-[#00ae9a]/50 transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#00ae9a]/10">
+                    <Gamepad2 className="w-6 h-6 text-[#00ae9a]" />
+                  </div>
+                  <div>
+                    <h3 className="text-slate-900 mb-1">HIPAA Tetris PWO</h3>
+                    <p className="text-sm text-slate-600">For Instructional Designers</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-slate-900 mb-1">HIPAA Tetris PWO</h3>
-                  <p className="text-sm text-slate-600">For Instructional Designers</p>
-                </div>
-              </div>
 
-              <p className="text-slate-700 mb-6">
-                A gamified Portable Web Object that turns HIPAA compliance training into an engaging Tetris-style game. Reskinnable and easily integrated into Storyline.
-              </p>
+                <p className="text-slate-700 mb-6">
+                  A gamified Portable Web Object that turns HIPAA compliance training into an engaging Tetris-style game. Reskinnable and easily integrated into Storyline.
+                </p>
 
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Content driven by simple CSV files</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Reusable across multiple training modules</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-slate-700">
-                  <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
-                  <span>Scalable micro-learning without custom builds</span>
-                </li>
-              </ul>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Content driven by simple CSV files</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Reusable across multiple training modules</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-700">
+                    <div className="w-1.5 h-1.5 bg-[#00ae9a] rounded-full mt-1.5 flex-shrink-0" />
+                    <span>Scalable micro-learning without custom builds</span>
+                  </li>
+                </ul>
 
-              <Button
-                className="w-full bg-[#00ae9a] hover:bg-[#007178]"
-                onClick={() => onNavigate('tetris')}
-              >
-                Play Tetris Demo
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Card>
-          </motion.div>
+                <Button
+                  className="w-full bg-[#00ae9a] hover:bg-[#007178]"
+                  onClick={() => onNavigate('tetris')}
+                >
+                  Play Tetris Demo
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Card>
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
