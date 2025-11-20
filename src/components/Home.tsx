@@ -54,7 +54,7 @@ const impactAreas = [
       'Chat Tutor can also run quick formative checks—"Want to try a quick scenario?"—so facilitators get real-time insight into how well the group is tracking.',
       'On the back end, facilitators can review aggregated questions to spot patterns, confusion points, and areas where content or coaching needs to be tightened.',
     ],
-    callToAction: 'This is where our Tech Lab: Tutor Chatbot comes in. We can prototype our own version, powered by OpenAI and grounded in our existing modules.',
+    callToAction: 'This is where our Tech Lab: TutorBot comes in.',
     color: '#007178',
   },
   {
@@ -131,7 +131,7 @@ const impactAreasDetailed = [
       'Business Partners can use it whenever they\'re asked content-specific questions, giving them confident, consistent answers without guessing.',
       'Afterwards, facilitators and leaders can review the types of questions the Tutor receives to spot patterns and identify where content or coaching needs tightening.',
     ],
-    callToAction: 'This is where our Tech Lab: Tutor Chatbot comes in. We can prototype our own version, powered by OpenAI and grounded in our existing modules.',
+    callToAction: 'This is where our Tech Lab: TutorBot comes in.',
     color: '#007178',
   },
   {
