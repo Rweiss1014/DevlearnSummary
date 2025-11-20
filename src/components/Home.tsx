@@ -118,6 +118,23 @@ const impactAreasDetailed = [
     color: '#00ae9a',
   },
   {
+    id: 'facilitators',
+    icon: MessageSquare,
+    title: 'Facilitators & Business Partners',
+    subtitle: 'Always-On Chat Tutor',
+    headline: 'Extend facilitation with an in-course conversational tutor.',
+    challenge: 'Facilitators and business partners shoulder the load during live sessions, but learner questions and uncertainty show up after the session ends. Not everyone feels comfortable asking questions live, and it\'s hard to gauge where people are still stuck.',
+    devlearnInsight: 'A growing number of platforms include "Chat Tutor" functionality: a conversational assistant built into the course that explains concepts, asks questions, and coaches learners in real time.',
+    examples: [
+      'After a scenario, facilitators can type or speak how they\'d coach it; Chat Tutor gives targeted feedback and suggests stronger alternatives.',
+      'They can embed an "Ask the Tutor" entry point inside modules so participants can clarify concepts privately, giving facilitators visibility into where people are getting stuck.',
+      'Chat Tutor can also run quick formative checks—"Want to try a quick scenario?"—so facilitators get real-time insight into how well the group is tracking.',
+      'On the back end, facilitators can review aggregated questions to spot patterns, confusion points, and areas where content or coaching needs to be tightened.',
+    ],
+    callToAction: 'This is where our Tech Lab: Tutor Chatbot comes in. We can prototype our own version, powered by OpenAI and grounded in our existing modules.',
+    color: '#007178',
+  },
+  {
     id: 'lms-team',
     icon: Award,
     title: 'LMS Team',
