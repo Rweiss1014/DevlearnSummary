@@ -4,7 +4,7 @@ import { Card } from './ui/card';
 import { Button } from './ui/button';
 
 interface TechLabTutorProps {
-  onNavigate: (page: 'home' | 'techlab' | 'chat') => void;
+  onNavigate: (page: 'home' | 'techlab' | 'chat' | 'tetris') => void;
 }
 
 export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
@@ -30,7 +30,7 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
         </motion.div>
 
         {/* Two Prototypes */}
-        <div className="grid md:grid-cols-2 gap-16 md:gap-12">
+        <div className="grid md:grid-cols-2 gap-y-12 md:gap-12">
           {/* Tutor Chatbot */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
 
               <Button
                 className="w-full bg-[#00ae9a] hover:bg-[#007178]"
-                onClick={() => window.open('/tetris/index.html', '_blank')}
+                onClick={() => onNavigate('tetris')}
               >
                 Play Tetris Demo
                 <ArrowRight className="ml-2 w-4 h-4" />

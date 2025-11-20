@@ -3,8 +3,8 @@ import { Menu, X } from 'lucide-react';
 import logo from 'figma:asset/41d3549c7d8ccb2ea85d0c048ae6e5da0d546a65.png';
 
 interface NavigationProps {
-  currentPage: 'home' | 'techlab';
-  onNavigate: (page: 'home' | 'techlab') => void;
+  currentPage: 'home' | 'techlab' | 'chat' | 'tetris';
+  onNavigate: (page: 'home' | 'techlab' | 'chat' | 'tetris') => void;
 }
 
 const navItems = [
