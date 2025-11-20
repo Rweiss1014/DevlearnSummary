@@ -22,6 +22,7 @@ export function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [showIntro, setShowIntro] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,11 +45,11 @@ export function ChatPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSendMessage = (content: string) => {
-    if (!content.trim()) return;
+  const handleSendMessage = async (content: string) => {
+    if (!content.trim() || isLoading) return;
 
     setShowIntro(false);
-    
+
     // Add user message
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -56,20 +57,50 @@ export function ChatPage() {
       content,
       timestamp: new Date(),
     };
-    
+
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
+    // Call the actual Netlify function
+    try {
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [...messages.map(m => ({ role: m.type === 'user' ? 'user' : 'assistant', content: m.content })), { role: 'user', content }],
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to get response');
+      }
+
+      const data = await response.json();
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        content: "This is a prototype. I currently have access to the HIPAA Compliance training module and can provide detailed answers, scenarios, and teaching guidance based on that content.",
+        content: data.message,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMessage]);
-    }, 1000);
+    } catch (error) {
+      console.error('Error calling chat API:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        type: 'bot',
+        content: error instanceof Error
+          ? error.message
+          : "I apologize, but I'm having trouble connecting to the AI service. Please make sure the OPENAI_API_KEY is configured in your Netlify environment variables.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleQuestionClick = (question: string) => {
@@ -130,6 +161,27 @@ export function ChatPage() {
               ))}
             </AnimatePresence>
 
+            {/* Loading indicator */}
+            {isLoading && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex justify-start"
+              >
+                <div className="max-w-[80%] rounded-2xl px-4 py-3 bg-gradient-to-br from-[#ade2e3]/30 to-[#00ae9a]/20 text-slate-800 border border-[#007178]/20">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Bot className="w-4 h-4 text-[#007178]" />
+                    <span className="text-sm text-[#007178]">Tutor</span>
+                  </div>
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-[#007178] rounded-full animate-bounce" />
+                    <div className="w-2 h-2 bg-[#007178] rounded-full animate-bounce delay-100" />
+                    <div className="w-2 h-2 bg-[#007178] rounded-full animate-bounce delay-200" />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
             {/* Suggested Questions */}
             {showIntro && messages.length > 0 && (
               <motion.div
@@ -173,7 +225,7 @@ export function ChatPage() {
               />
               <Button
                 onClick={() => handleSendMessage(inputValue)}
-                disabled={!inputValue.trim()}
+                disabled={!inputValue.trim() || isLoading}
                 className="bg-[#007178] hover:bg-[#00ae9a] disabled:opacity-50 px-6 rounded-xl"
               >
                 <Send className="w-5 h-5" />
