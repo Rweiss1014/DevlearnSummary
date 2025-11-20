@@ -2,7 +2,6 @@ import { motion } from 'motion/react';
 import { Bot, ArrowRight } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
-import { PDFUpload } from './PDFUpload';
 
 interface TechLabTutorProps {
   onNavigate: (page: 'home' | 'techlab' | 'chat') => void;
@@ -40,16 +39,6 @@ export function TechLabTutor({ onNavigate }: TechLabTutorProps) {
             Try Chat Demo
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
-        </motion.div>
-
-        {/* PDF Upload */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12"
-        >
-          <PDFUpload />
         </motion.div>
 
         {/* Pilot Concept */}
